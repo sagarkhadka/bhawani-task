@@ -22,7 +22,8 @@ module.exports = {
           main: '#00A8E8'
         },
         secondary: '#00171F',
-        tertiary: '#979797'
+        tertiary: '#979797',
+        accent: '#f0f0f0'
       },
 
       keyframes: {
