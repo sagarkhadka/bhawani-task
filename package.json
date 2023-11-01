@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,8 +18,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
+    "cmdk": "^0.2.0",
     "eslint": "8.52.0",
     "eslint-config-next": "14.0.1",
+    "lucide-react": "^0.291.0",
     "lucide-react": "^0.291.0",
     "next": "14.0.1",
     "postcss": "8.4.31",
