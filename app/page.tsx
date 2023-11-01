@@ -1,11 +1,16 @@
-import Image from 'next/image'
+'use client'
+
+import Supplier from '@/components/Supplier'
 
 export default function Home() {
   return (
-    <main>
-      <h1 className='text-primary-main mt-6 pb-5 text-center text-3xl font-bold'>
-        Old Durbar
-      </h1>
+    <main className='p-10'>
+      <div className='pb-5'>
+        <h4 className='text-2xl font-bold'>New debit note</h4>
+      </div>
+      <div className='pt-5'>
+        <Supplier />
+      </div>
     </main>
   )
 }
