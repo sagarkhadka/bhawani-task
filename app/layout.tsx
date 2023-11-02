@@ -2,6 +2,7 @@ import { DM_Sans } from 'next/font/google'
 
 import '../styles/globals.css'
 import type { Metadata } from 'next'
+import { ReduxProvider } from '@/redux/Provider'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -17,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={dmSans.className}>{children}</body>
+      <body className={dmSans.className}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   )
 }
