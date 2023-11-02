@@ -3,7 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { X } from 'lucide-react'
 
-export type DebitType = {
+export type TDebitType = {
   product: string
   batch: string
   warehouse: string
@@ -14,7 +14,7 @@ export type DebitType = {
   amount: number
 }
 
-export const defaultTableData: DebitType[] = [
+export const defaultTableData: TDebitType[] = [
   {
     product: 'Old durbar Black chimney 750ml',
     batch: '4324A',
@@ -27,7 +27,7 @@ export const defaultTableData: DebitType[] = [
   }
 ]
 
-export const columns: ColumnDef<DebitType>[] = [
+export const columns: ColumnDef<TDebitType>[] = [
   {
     accessorKey: 'product',
     header: 'Items/Products'

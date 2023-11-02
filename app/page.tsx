@@ -3,11 +3,11 @@ import { ChevronRight } from 'lucide-react'
 
 import Supplier from '@/components/Supplier'
 import DataTable from '@/components/table/DataTable'
-import { DebitType, columns } from '@/components/table/TableColumn'
+import { TDebitType, columns } from '@/components/table/TableColumn'
 import CalculateTotal from '@/components/CalculateTotal'
 import { Button } from '@/components/ui/button'
 
-const getData = async (): Promise<DebitType[]> => {
+const getData = async (): Promise<TDebitType[]> => {
   return [
     {
       product: 'Old durbar Black chimney 750ml',
@@ -71,14 +71,16 @@ export default async function Home() {
       </div>
 
       <div className='mt-7'>
-        <h4 className='text-lg font-semibold'>Terms & Conditions</h4>
+        <h4 className='mb-4 text-lg font-semibold'>Terms & Conditions</h4>
         <textarea
           name=''
           id=''
           className='max-h-[20rem] min-h-[7rem] min-w-full rounded-lg border border-zinc-400 bg-accent px-4 py-3 outline-none focus:outline-1 focus:outline-zinc-500/80'
           placeholder='Enter notes'
         />
-        <Button>Save</Button>
+        <div className='mt-5 flex justify-end'>
+          <Button>Save</Button>
+        </div>
       </div>
     </main>
   )

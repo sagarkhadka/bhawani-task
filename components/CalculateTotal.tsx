@@ -34,9 +34,11 @@ const CalculateTotal = () => {
           <p className='flex-1 text-right'>0</p>
         </div>
 
+        <hr className='my-2 border-t-2 border-zinc-700' />
+
         <div className='flex items-center py-2'>
-          <p className='flex-1 text-left font-medium'>Grand Total</p>
-          <p className='flex-1 text-right font-medium'>0</p>
+          <p className='flex-1 text-left font-bold '>Grand Total</p>
+          <p className='flex-1 text-right font-bold '>0</p>
         </div>
       </div>
     </>

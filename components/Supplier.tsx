@@ -7,8 +7,8 @@ const Supplier = () => {
   return (
     <>
       <form action=''>
-        <div className='flex-column mb-8 flex gap-4 md:flex-row'>
-          <div className='flex-1'>
+        <div className='grid grid-cols-2 gap-8'>
+          <div className='w-full'>
             <Input
               type='email'
               placeholder='Eg. Globax Corporation'
@@ -17,18 +17,18 @@ const Supplier = () => {
               name='supplier'
             />
           </div>
-          <div className='flex-1'>
+          <div className='w-full'>
             <Input type='date' label='Date' required={true} name='date' />
           </div>
-        </div>
-        <div className='w-1/2'>
-          <Input
-            type='text'
-            placeholder='Enter reference'
-            label='Reference'
-            required={true}
-            name='reference'
-          />
+          <div className='w-full'>
+            <Input
+              type='text'
+              placeholder='Enter reference'
+              label='Reference'
+              required={true}
+              name='reference'
+            />
+          </div>
         </div>
       </form>
     </>

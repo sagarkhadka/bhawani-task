@@ -1,8 +1,8 @@
-import { DebitType } from '@/components/table/TableColumn'
+import { TDebitType } from '@/components/table/TableColumn'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type InitialState = {
-  value: DebitType
+  value: TDebitType
 }
 
 const initialState = {
@@ -15,14 +15,14 @@ const initialState = {
     discount: 0,
     tax: 0,
     amount: 0
-  } as DebitType
+  } as TDebitType
 } as InitialState
 
 export const debit = createSlice({
   name: 'debit',
   initialState,
   reducers: {
-    addDebit: (_, action: PayloadAction<DebitType>) => {
+    addDebit: (_, action: PayloadAction<TDebitType>) => {
       return {
         value: action.payload
       }
