@@ -1,11 +1,14 @@
 import { Suspense } from 'react'
 import { ChevronRight } from 'lucide-react'
+import { useDispatch } from 'react-redux'
 
 import Supplier from '@/components/Supplier'
 import DataTable from '@/components/table/DataTable'
 import { TDebitType, columns } from '@/components/table/TableColumn'
-import CalculateTotal from '@/components/CalculateTotal'
+import CalculateTotal from '@/components/calculate/CalculateTotal'
 import { Button } from '@/components/ui/button'
+import { addDebit } from '@/redux/features/debit-slice'
+import { AppDispatch } from '@/redux/store'
 
 const getData = async (): Promise<TDebitType[]> => {
   return [
@@ -18,12 +21,28 @@ const getData = async (): Promise<TDebitType[]> => {
       discount: 230,
       tax: 13,
       amount: 4140
+    },
+
+    {
+      product: 'New durbar Black chimney 750ml',
+      batch: '4324A',
+      warehouse: 'KTM',
+      quantity: 5,
+      rate: 2300,
+      discount: 230,
+      tax: 13,
+      amount: 4140
     }
   ]
 }
 
 export default async function Home() {
+  const dispacth = useDispatch<AppDispatch>()
   const data = await getData()
+
+  if (data) {
+    dispacth(addDebit(data))
+  }
 
   return (
     <main className='p-10'>
@@ -58,7 +77,7 @@ export default async function Home() {
           </div>
 
           <div className='flex-1'>
-            <CalculateTotal />
+            <CalculateTotal billData={data} />
           </div>
         </div>
       </div>

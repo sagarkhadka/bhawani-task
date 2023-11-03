@@ -1,6 +1,15 @@
-import React from 'react'
+'use client'
 
-const CalculateTotal = () => {
+import React from 'react'
+import { TDebitType } from '../table/TableColumn'
+
+type TCalculateProps = {
+  billData: TDebitType[]
+}
+
+const CalculateTotal = ({ billData }: TCalculateProps) => {
+  console.log(billData)
+
   return (
     <>
       <div className='p-2'>

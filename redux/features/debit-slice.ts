@@ -22,7 +22,7 @@ export const debit = createSlice({
   name: 'debit',
   initialState,
   reducers: {
-    addDebit: (_, action: PayloadAction<TDebitType>) => {
+    addDebit: (_, action: PayloadAction<TDebitType[]>) => {
       return {
         value: action.payload
       }
