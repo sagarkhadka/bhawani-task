@@ -1,48 +1,52 @@
-import { Suspense } from 'react'
+'use client'
+
+import { Suspense, useEffect, useMemo } from 'react'
 import { ChevronRight } from 'lucide-react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Supplier from '@/components/Supplier'
 import DataTable from '@/components/table/DataTable'
-import { TDebitType, columns } from '@/components/table/TableColumn'
+import { columns } from '@/components/table/TableColumn'
 import CalculateTotal from '@/components/calculate/CalculateTotal'
 import { Button } from '@/components/ui/button'
 import { addDebit } from '@/redux/features/debit-slice'
-import { AppDispatch } from '@/redux/store'
+import { AppDispatch, RootState } from '@/redux/store'
 
-const getData = async (): Promise<TDebitType[]> => {
-  return [
-    {
-      product: 'Old durbar Black chimney 750ml',
-      batch: '4324A',
-      warehouse: 'KTM',
-      quantity: 2,
-      rate: 2300,
-      discount: 230,
-      tax: 13,
-      amount: 4140
-    },
-
-    {
-      product: 'New durbar Black chimney 750ml',
-      batch: '4324A',
-      warehouse: 'KTM',
-      quantity: 5,
-      rate: 2300,
-      discount: 230,
-      tax: 13,
-      amount: 4140
-    }
-  ]
-}
-
-export default async function Home() {
+export default function Home() {
   const dispacth = useDispatch<AppDispatch>()
-  const data = await getData()
+  const debitData = useSelector((state: RootState) => state.debitReducer)
 
-  if (data) {
-    dispacth(addDebit(data))
-  }
+  const data = useMemo(
+    () => [
+      {
+        product: 'Old durbar Black chimney 750ml',
+        batch: '4324A',
+        warehouse: 'KTM',
+        quantity: 2,
+        rate: 2300,
+        discount: 230,
+        tax: 13,
+        amount: 4140
+      },
+      {
+        product: 'New durbar Black chimney 750ml',
+        batch: '4324A',
+        warehouse: 'KTM',
+        quantity: 5,
+        rate: 2300,
+        discount: 230,
+        tax: 13,
+        amount: 4140
+      }
+    ],
+    []
+  )
+
+  useEffect(() => {
+    if (data) {
+      dispacth(addDebit(data))
+    }
+  }, [data, dispacth])
 
   return (
     <main className='p-10'>
@@ -55,7 +59,7 @@ export default async function Home() {
 
       <Suspense fallback={'Loading...'}>
         <div className='mt-5'>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={debitData.value} />
         </div>
       </Suspense>
 
@@ -77,7 +81,7 @@ export default async function Home() {
           </div>
 
           <div className='flex-1'>
-            <CalculateTotal billData={data} />
+            <CalculateTotal billData={debitData.value} />
           </div>
         </div>
       </div>
