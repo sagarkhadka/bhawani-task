@@ -2,21 +2,23 @@ import { TDebitType } from '@/components/table/TableColumn'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type InitialState = {
-  value: TDebitType
+  value: TDebitType[]
 }
 
-const initialState = {
-  value: {
-    product: '',
-    batch: '',
-    warehouse: '',
-    quantity: 0,
-    rate: 0,
-    discount: 0,
-    tax: 0,
-    amount: 0
-  } as TDebitType
-} as InitialState
+const initialState: InitialState = {
+  value: [
+    {
+      product: '',
+      batch: '',
+      warehouse: '',
+      quantity: 0,
+      rate: 0,
+      discount: 0,
+      tax: 0,
+      amount: 0
+    }
+  ]
+}
 
 export const debit = createSlice({
   name: 'debit',
