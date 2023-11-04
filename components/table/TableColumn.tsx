@@ -1,7 +1,15 @@
-'use client'
-
 import { ColumnDef } from '@tanstack/react-table'
-import { X } from 'lucide-react'
+
+import DeleteRow from './DeleteRow'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/Select'
 
 export type TDebitType = {
   product: string
@@ -13,19 +21,6 @@ export type TDebitType = {
   tax: number
   amount: number
 }
-
-export const defaultTableData: TDebitType[] = [
-  {
-    product: 'Old durbar Black chimney 750ml',
-    batch: '4324A',
-    warehouse: 'KTM',
-    quantity: 2,
-    rate: 2300,
-    discount: 230,
-    tax: 13,
-    amount: 4140
-  }
-]
 
 export const columns: ColumnDef<TDebitType>[] = [
   {
@@ -50,14 +45,29 @@ export const columns: ColumnDef<TDebitType>[] = [
       return (
         <div className='flex items-center gap-3'>
           {row.getValue('quantity')}
-          <select
+          {/* <select
             name='qty'
             id=''
             className='bg-transparent text-zinc-500 outline-none'
           >
             <option value='Btl'>Btl</option>
             <option value='Pkt'>Pkt</option>
-          </select>
+          </select> */}
+          <Select>
+            <SelectTrigger className='border-none shadow-none'>
+              <SelectValue placeholder='Btl.' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem value='apple'>Apple</SelectItem>
+                <SelectItem value='banana'>Banana</SelectItem>
+                <SelectItem value='blueberry'>Blueberry</SelectItem>
+                <SelectItem value='grapes'>Grapes</SelectItem>
+                <SelectItem value='pineapple'>Pineapple</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       )
     }
@@ -102,13 +112,10 @@ export const columns: ColumnDef<TDebitType>[] = [
   },
 
   {
-    id: 'actions',
+    accessorKey: 'id',
+    header: '',
     cell: ({ row }) => {
-      return (
-        <button className='bg-transparent'>
-          <X color='#ef4444' />
-        </button>
-      )
+      return <DeleteRow rowIndex={row?.index} />
     }
   }
 ]

@@ -8,8 +8,6 @@ type TCalculateProps = {
 }
 
 const CalculateTotal = ({ billData }: TCalculateProps) => {
-  console.log(billData)
-
   return (
     <>
       <div className='p-2'>

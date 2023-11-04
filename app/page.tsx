@@ -59,7 +59,7 @@ export default function Home() {
 
       <Suspense fallback={'Loading...'}>
         <div className='mt-5'>
-          <DataTable columns={columns} data={debitData.value} />
+          <DataTable columns={columns} data={debitData.value ?? []} />
         </div>
       </Suspense>
 
@@ -81,7 +81,7 @@ export default function Home() {
           </div>
 
           <div className='flex-1'>
-            <CalculateTotal billData={debitData.value} />
+            <CalculateTotal billData={debitData.value ?? []} />
           </div>
         </div>
       </div>

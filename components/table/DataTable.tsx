@@ -21,6 +21,9 @@ const DataTable = <TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel()
+    // initialState: {
+    //   hiddenColumns: ['id']
+    // }
   })
 
   return (
@@ -64,7 +67,7 @@ const DataTable = <TData, TValue>({
               <tr>
                 <td
                   colSpan={columns.length}
-                  className='h-24 text-center align-top text-tertiary'
+                  className='py-10 text-center align-top text-tertiary'
                 >
                   Add code or product
                 </td>
