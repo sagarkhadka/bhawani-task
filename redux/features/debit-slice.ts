@@ -14,9 +14,13 @@ export const debit = createSlice({
   name: 'debit',
   initialState,
   reducers: {
-    addDebit: (_, action: PayloadAction<TDebitType[]>) => {
+    addDebit: (state, action: PayloadAction<TDebitType[]>) => {
+      // console.log('hello')
+      // console.log(action.payload)
+      const newValue = action.payload || []
       return {
-        value: action.payload
+        ...state,
+        value: state.value ? [...state.value, ...newValue] : [...newValue]
       }
     },
 

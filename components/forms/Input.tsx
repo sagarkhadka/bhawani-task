@@ -7,6 +7,8 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string
   label: string
   required?: boolean
+  isError?: boolean
+  errorMessage?: string
 }
 
 const Input = forwardRef(
@@ -17,6 +19,8 @@ const Input = forwardRef(
       className,
       label,
       required,
+      isError,
+      errorMessage,
       ...rest
     }: InputProps,
     ref: Ref<HTMLInputElement>
@@ -35,12 +39,19 @@ const Input = forwardRef(
             type={type}
             placeholder={placeholder}
             ref={ref}
-            {...rest}
             className={cn(
-              'bg-accent w-full rounded-lg border border-zinc-400 px-4 py-3 focus:outline-1 focus:outline-zinc-500/80',
-              className
+              'w-full rounded-lg border border-zinc-400 bg-accent px-4 py-3 focus:outline-1 focus:outline-zinc-500/80',
+              className,
+              {
+                'border-red-500 text-red-500 placeholder-red-500 focus:outline-red-500/80':
+                  errorMessage !== undefined
+              }
             )}
+            {...rest}
           />
+          {errorMessage ? (
+            <p className='pl-4 text-sm text-red-500'>{errorMessage}</p>
+          ) : null}
         </div>
       </>
     )

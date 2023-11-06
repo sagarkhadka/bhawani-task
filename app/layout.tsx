@@ -1,4 +1,5 @@
 import { DM_Sans } from 'next/font/google'
+import { Toaster } from 'react-hot-toast'
 
 import '../styles/globals.css'
 import type { Metadata } from 'next'
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={dmSans.className}>
         <ReduxProvider>{children}</ReduxProvider>
+        <Toaster />
       </body>
     </html>
   )

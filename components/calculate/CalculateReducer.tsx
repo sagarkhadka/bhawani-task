@@ -18,20 +18,24 @@ export type ReducerAction = {
   payload?: TCalculate
 }
 
-export const INITIAL_STATE = {
-  total: 0,
-  totalExciseDuty: 0,
-  discount: 0,
-  nonTaxableTotal: 0,
-  taxableTotal: 0,
-  vat: 0
-}
+export const INITIAL_STATE = [
+  {
+    total: 0,
+    totalExciseDuty: 0,
+    discount: 0,
+    nonTaxableTotal: 0,
+    taxableTotal: 0,
+    vat: 0
+  }
+]
 
-export const useCalculateReducer: Reducer<TCalculate[], ReducerAction> = (
+export const calculateReducer: Reducer<TCalculate[], ReducerAction> = (
   state,
   action
 ) => {
-  switch (action.type) {
+  const { type } = action
+
+  switch (type) {
     case ReducerActionType.ADD_:
       console.log('Added')
       return {
