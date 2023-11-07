@@ -11,6 +11,7 @@ import { Button } from './ui/button'
 import { addProductValidation } from '@/utils/formValidation'
 import { AppDispatch } from '@/redux/store'
 import { addDebit } from '@/redux/features/debit-slice'
+import { TAX_PERCENT } from '@/lib/constant'
 
 type Inputs = {
   product: string
@@ -46,7 +47,7 @@ const AddProductForm = ({ onSuccess }: TOnSuccess) => {
     const quantity = watch('quantity') || 0
     const rate = watch('rate') || 0
     const discount = watch('discount')
-    const tax = 13
+    const tax = TAX_PERCENT
 
     const calculatedAmount = quantity * rate - discount
     const calculatedGrandTotal =

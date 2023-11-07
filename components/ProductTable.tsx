@@ -10,6 +10,7 @@ import { columns } from '@/components/table/TableColumn'
 import { Button } from './ui/button'
 import PopupModal from './PopupModal'
 import AddProductForm from './AddProductForm'
+import { TAX_PERCENT } from '@/lib/constant'
 
 const ProductTable = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,7 +27,7 @@ const ProductTable = () => {
         quantity: 2,
         rate: 2300,
         discount: 230,
-        tax: 13,
+        tax: TAX_PERCENT,
         amount: 4002
       }
       // {
